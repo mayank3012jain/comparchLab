@@ -1,4 +1,4 @@
-module controller(op, cs, pcWrite, pcwWriteCond, IorD, memRead, memWrite, IRWrite ,memToReg, pcSource, ALUop, ALUsrcB, ALUsrcA, RegWrite, RegDst, ns)
+module controller(op, cs, pcWrite, pcwWriteCond, IorD, memRead, memWrite, IRWrite ,memToReg, pcSource, ALUop, ALUsrcB, ALUsrcA, RegWrite, RegDst, ns);
 	input [5:0] op;
 	input [3:0] cs;
 	output pcWrite, pcwWriteCond, IorD, memRead, memWrite, IRWrite, memToReg, ALUsrcA, RegDst, RegWrite;
@@ -37,5 +37,5 @@ module controller(op, cs, pcWrite, pcwWriteCond, IorD, memRead, memWrite, IRWrit
 	assign ns[1] = cur[6] | (~cs[3]&~cs[2]&~cs[1]&cs[0])&(op[5]&~op[4]&~op[3]&~op[2]& op[1]&op[0]) | (~cs[3]&~cs[2]&~cs[1]&cs[0])&(op[5]&~op[4]&op[3]&~op[2]& op[1]&op[0])| (~cs[3]&~cs[2]&~cs[1]&cs[0])&(~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&~op[0])|(~cs[3]&~cs[2]& cs[1]&~cs[0])&(op[5]&~op[4]&~op[3]&~op[2]& op[1]&op[0]);
 	assign ns[0] = cur[0] | cur[6] | (~cs[3]&~cs[2]&~cs[1]&~cs[0])&(~op[5]&~op[4]&~op[3]&~op[2]& op[1]&~op[0]) | (~cs[3]&~cs[2]& cs[1]&~cs[0])&( op[5]&~op[4]& op[3]&~op[2]& op[1]& op[0]) | (~cs[3]&~cs[2]& cs[1]&~cs[0])&(op[5]&~op[4]&~op[3]&~op[2]& op[1]&op[0]);
 	
-endmodule;
+endmodule
 	
